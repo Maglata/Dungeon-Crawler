@@ -357,6 +357,7 @@
 "Assets/3rd-party/LowPolyDungeon/Demo Scenes/ScreenshotMaker.cs"
 "Assets/Scripts/CameraControl.cs"
 "Assets/Scripts/CombatController.cs"
+"Assets/Scripts/EnemyController.cs"
 "Assets/Scripts/PlayerController.cs"
 "Assets/Scripts/SceneSwitcher.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01.cs"

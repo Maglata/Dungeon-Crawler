@@ -15,7 +15,7 @@ D:/UnityProjects/Dungeon-Crawler/Elfshock Dungeon Crawler
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-35886
+53670
 Successfully changed project path to: D:/UnityProjects/Dungeon-Crawler/Elfshock Dungeon Crawler
 D:/UnityProjects/Dungeon-Crawler/Elfshock Dungeon Crawler
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
@@ -49,11 +49,11 @@ D:/UnityProjects/Dungeon-Crawler/Elfshock Dungeon Crawler
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [29348] Host "[IP] 192.168.0.195 [Port] 0 [Flags] 2 [Guid] 3413728843 [EditorId] 3413728843 [Version] 1048832 [Id] WindowsEditor(7,STEF-PC) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+Player connection [19628] Host "[IP] 192.168.0.195 [Port] 0 [Flags] 2 [Guid] 1784422927 [EditorId] 1784422927 [Version] 1048832 [Id] WindowsEditor(7,STEF-PC) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
 
-Player connection [29348] Host "[IP] 192.168.0.195 [Port] 0 [Flags] 2 [Guid] 3413728843 [EditorId] 3413728843 [Version] 1048832 [Id] WindowsEditor(7,STEF-PC) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [19628] Host "[IP] 192.168.0.195 [Port] 0 [Flags] 2 [Guid] 1784422927 [EditorId] 1784422927 [Version] 1048832 [Id] WindowsEditor(7,STEF-PC) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
 
-Refreshing native plugins compatible for Editor in 20.34 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 17.92 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2022.3.4f1 (35713cd46cd7)
 [Subsystems] Discovering subsystems at path D:/UnityHub/2022.3.4f1/Editor/Data/Resources/UnitySubsystems
@@ -69,44 +69,44 @@ Initialize mono
 Mono path[0] = 'D:/UnityHub/2022.3.4f1/Editor/Data/Managed'
 Mono path[1] = 'D:/UnityHub/2022.3.4f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'D:/UnityHub/2022.3.4f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56940
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56492
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: D:/UnityHub/2022.3.4f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.007945 seconds.
-- Loaded All Assemblies, in  0.952 seconds
+Registered in 0.008958 seconds.
+- Loaded All Assemblies, in  0.683 seconds
 Native extension for WindowsStandalone target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.581 seconds
-Domain Reload Profiling: 1534ms
-	BeginReloadAssembly (271ms)
+- Finished resetting the current domain, in  0.533 seconds
+Domain Reload Profiling: 1217ms
+	BeginReloadAssembly (182ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (0ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (1ms)
-	RebuildCommonClasses (90ms)
-	RebuildNativeTypeToScriptingClass (26ms)
-	initialDomainReloadingComplete (111ms)
-	LoadAllAssembliesAndSetupDomain (454ms)
-		LoadAssemblies (270ms)
+		CreateAndSetChildDomain (2ms)
+	RebuildCommonClasses (70ms)
+	RebuildNativeTypeToScriptingClass (19ms)
+	initialDomainReloadingComplete (101ms)
+	LoadAllAssembliesAndSetupDomain (310ms)
+		LoadAssemblies (181ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (446ms)
-			TypeCache.Refresh (444ms)
-				TypeCache.ScanAssembly (405ms)
-			ScanForSourceGeneratedMonoScriptInfo (1ms)
+		AnalyzeDomain (304ms)
+			TypeCache.Refresh (302ms)
+				TypeCache.ScanAssembly (275ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
 			ResolveRequiredComponents (1ms)
-	FinalizeReload (583ms)
+	FinalizeReload (534ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (436ms)
+		SetupLoadedEditorAssemblies (396ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (17ms)
+			InitializePlatformSupportModulesInManaged (16ms)
 			SetLoadedEditorAssemblies (16ms)
 			RefreshPlugins (0ms)
-			BeforeProcessingInitializeOnLoad (5ms)
-			ProcessInitializeOnLoadAttributes (293ms)
-			ProcessInitializeOnLoadMethodAttributes (105ms)
+			BeforeProcessingInitializeOnLoad (6ms)
+			ProcessInitializeOnLoadAttributes (271ms)
+			ProcessInitializeOnLoadMethodAttributes (87ms)
 			AfterProcessingInitializeOnLoad (0ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
@@ -116,81 +116,52 @@ Worker process is ready to serve import requests
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory doesn't match image D:\UnityProjects\Dungeon-Crawler\Elfshock Dungeon Crawler\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
 Symbol file LoadedFromMemory doesn't match image D:\UnityProjects\Dungeon-Crawler\Elfshock Dungeon Crawler\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
-- Loaded All Assemblies, in  1.539 seconds
-Refreshing native plugins compatible for Editor in 2.99 ms, found 3 plugins.
+- Loaded All Assemblies, in  1.453 seconds
+Refreshing native plugins compatible for Editor in 3.36 ms, found 3 plugins.
 Native extension for WindowsStandalone target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  1.199 seconds
-Domain Reload Profiling: 2738ms
-	BeginReloadAssembly (272ms)
+- Finished resetting the current domain, in  1.315 seconds
+Domain Reload Profiling: 2769ms
+	BeginReloadAssembly (226ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (13ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (50ms)
-	RebuildCommonClasses (75ms)
-	RebuildNativeTypeToScriptingClass (26ms)
-	initialDomainReloadingComplete (77ms)
-	LoadAllAssembliesAndSetupDomain (1089ms)
-		LoadAssemblies (532ms)
+		CreateAndSetChildDomain (33ms)
+	RebuildCommonClasses (64ms)
+	RebuildNativeTypeToScriptingClass (40ms)
+	initialDomainReloadingComplete (82ms)
+	LoadAllAssembliesAndSetupDomain (1041ms)
+		LoadAssemblies (433ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (693ms)
-			TypeCache.Refresh (659ms)
-				TypeCache.ScanAssembly (633ms)
+		AnalyzeDomain (718ms)
+			TypeCache.Refresh (680ms)
+				TypeCache.ScanAssembly (654ms)
 			ScanForSourceGeneratedMonoScriptInfo (27ms)
-			ResolveRequiredComponents (7ms)
-	FinalizeReload (1200ms)
+			ResolveRequiredComponents (11ms)
+	FinalizeReload (1316ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (939ms)
+		SetupLoadedEditorAssemblies (925ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (8ms)
-			SetLoadedEditorAssemblies (8ms)
+			InitializePlatformSupportModulesInManaged (7ms)
+			SetLoadedEditorAssemblies (7ms)
 			RefreshPlugins (0ms)
-			BeforeProcessingInitializeOnLoad (116ms)
-			ProcessInitializeOnLoadAttributes (764ms)
-			ProcessInitializeOnLoadMethodAttributes (41ms)
-			AfterProcessingInitializeOnLoad (3ms)
+			BeforeProcessingInitializeOnLoad (98ms)
+			ProcessInitializeOnLoadAttributes (776ms)
+			ProcessInitializeOnLoadMethodAttributes (32ms)
+			AfterProcessingInitializeOnLoad (5ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (13ms)
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.23 seconds
-Refreshing native plugins compatible for Editor in 4.21 ms, found 3 plugins.
+		AwakeInstancesAfterBackupRestoration (17ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.15 seconds
+Refreshing native plugins compatible for Editor in 24.03 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 3118 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 31 unused Assets / (56.4 KB). Loaded Objects now: 3589.
-Memory consumption went from 121.6 MB to 121.5 MB.
-Total: 5.723600 ms (FindLiveObjects: 0.304700 ms CreateObjectMapping: 0.314300 ms MarkObjects: 4.943700 ms  DeleteObjects: 0.159200 ms)
+Unloading 3120 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 31 unused Assets / (56.6 KB). Loaded Objects now: 3591.
+Memory consumption went from 121.5 MB to 121.4 MB.
+Total: 12.423900 ms (FindLiveObjects: 2.174800 ms CreateObjectMapping: 0.586900 ms MarkObjects: 9.495500 ms  DeleteObjects: 0.164500 ms)
 
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Import Request.
-  Time since last request: 1125950.723151 seconds.
-  path: Assets/Animations/PlayerAnimationController.controller
-  artifactKey: Guid(41c121591782c104fbc43f72004ed13d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Animations/PlayerAnimationController.controller using Guid(41c121591782c104fbc43f72004ed13d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1aa27880d23f297a1c5d70ca816f3596') in 0.034532 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 4
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 4.06 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 1 unused Assets / (0.8 KB). Loaded Objects now: 3590.
-Memory consumption went from 68.9 MB to 68.9 MB.
-Total: 5.354100 ms (FindLiveObjects: 0.333500 ms CreateObjectMapping: 0.309700 ms MarkObjects: 4.684600 ms  DeleteObjects: 0.025000 ms)
-
-Prepare: number of updated asset objects reloaded= 0
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
   custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
@@ -205,11 +176,51 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 28.128174 seconds.
-  path: Assets/Mixamo/Banana Man@Breathing Idle (1).fbx
-  artifactKey: Guid(119b6c8879434464895eb7d291b5e0c8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Mixamo/Banana Man@Breathing Idle (1).fbx using Guid(119b6c8879434464895eb7d291b5e0c8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b41b858d931883b95c7f41ce546b1e55') in 0.263632 seconds
+  Time since last request: 1134512.532280 seconds.
+  path: Assets/Prefabs/PlayerTest.prefab
+  artifactKey: Guid(833e93b06dac0a44f81c112038d2159f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/PlayerTest.prefab using Guid(833e93b06dac0a44f81c112038d2159f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '95a86203470f6f9330e3552be4b59148') in 0.279761 seconds
+Internal: There are remaining Allocations on the JobTempAlloc. This is a leak, and will impact performance
+To Debug, run app with -diag-job-temp-memory-leak-validation cmd line argument. This will output the callstacks of the leaked allocations.
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 147
-TcpMessagingSession - receive error
-AssetImportWorkerClient::OnTransportError - code=10054 error=An existing connection was forcibly closed by the remote host.
+Number of asset objects unloaded after import = 304
+========================================================================
+Received Import Request.
+  Time since last request: 7.049573 seconds.
+  path: Assets/Prefabs/Player
+  artifactKey: Guid(50fa23bb6457ba040bedc5ae3967c6b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Player using Guid(50fa23bb6457ba040bedc5ae3967c6b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '76582158661ac66573eb3d72ea86479c') in 0.001032 seconds
+Internal: There are remaining Allocations on the JobTempAlloc. This is a leak, and will impact performance
+To Debug, run app with -diag-job-temp-memory-leak-validation cmd line argument. This will output the callstacks of the leaked allocations.
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 48.034115 seconds.
+  path: Assets/Prefabs/Player/PlayerTest.prefab
+  artifactKey: Guid(833e93b06dac0a44f81c112038d2159f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Player/PlayerTest.prefab using Guid(833e93b06dac0a44f81c112038d2159f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '54f553599fb36fad34da45b37dc454a3') in 0.004422 seconds
+Internal: There are remaining Allocations on the JobTempAlloc. This is a leak, and will impact performance
+To Debug, run app with -diag-job-temp-memory-leak-validation cmd line argument. This will output the callstacks of the leaked allocations.
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 78.942742 seconds.
+  path: Assets/Prefabs/Player/Maria WProp J J Ong@Great Sword Slash.fbx
+  artifactKey: Guid(462ed43ce4135a14dbe984bc4fa2df29) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Player/Maria WProp J J Ong@Great Sword Slash.fbx using Guid(462ed43ce4135a14dbe984bc4fa2df29) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '436f8161d059516f7b6139e4c981852a') in 0.009670 seconds
+Internal: There are remaining Allocations on the JobTempAlloc. This is a leak, and will impact performance
+To Debug, run app with -diag-job-temp-memory-leak-validation cmd line argument. This will output the callstacks of the leaked allocations.
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 135
+========================================================================
+Received Import Request.
+  Time since last request: 50.834810 seconds.
+  path: Assets/Prefabs/Player/Maria WProp J J Ong.fbx
+  artifactKey: Guid(14a448de93c55fd47b038d6edafd9ae5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Player/Maria WProp J J Ong.fbx using Guid(14a448de93c55fd47b038d6edafd9ae5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7d2cf3e1222a1a24f09fbe719dc49320') in 0.132214 seconds
+Internal: There are remaining Allocations on the JobTempAlloc. This is a leak, and will impact performance
+To Debug, run app with -diag-job-temp-memory-leak-validation cmd line argument. This will output the callstacks of the leaked allocations.
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 146
