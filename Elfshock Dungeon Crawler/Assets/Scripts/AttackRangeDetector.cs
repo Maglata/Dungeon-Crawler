@@ -34,4 +34,13 @@ public class AttackRangeDetector : MonoBehaviour
     {
         return enemiesInRange;
     }
+    public void RemoveEnemy(GameObject obj)
+    {
+        if (enemiesInRange.Contains(obj))
+        {
+            enemiesInRange.Remove(obj);
+            if (enemiesInRange.Count == 0)
+                combatcontroller.enemyInRange = false;
+        }
+    }
 }

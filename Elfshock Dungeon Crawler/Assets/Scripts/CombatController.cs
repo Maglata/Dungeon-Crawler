@@ -5,14 +5,18 @@ using UnityEngine;
 public class CombatController : MonoBehaviour
 {
     [SerializeField] float attackInterval = 1f;
+    [SerializeField] float invulInterval = 1f;
     [SerializeField] float MaxHealth = 100f;
+    [SerializeField] private float Damage = 25f;
 
     private float CurrentHealth = 0f;
 
     public bool enemyInRange = false;
 
     private float attackTimer = 0f;
-    private bool canAttack = true;  
+    private bool canAttack = true;
+
+    private float invulTimer = 0f;
 
     private AttackRangeDetector rangeDetector;
     private List<GameObject> enemiesInRange;
@@ -34,6 +38,7 @@ public class CombatController : MonoBehaviour
     void Update()
     {
         attackTimer += Time.deltaTime;
+        invulTimer += Time.deltaTime;
 
         // Check if enough time has passed to allow another attack
         if (attackTimer >= attackInterval)
@@ -55,7 +60,7 @@ public class CombatController : MonoBehaviour
             foreach (GameObject enemy in enemiesInRange)
             {
                 // Perform enemy damage animation and logic for each enemy here
-              
+                enemy.GetComponent<EnemyController>().TakeDamage(Damage);
             }
             attackTimer = 0f;
             canAttack = false;
@@ -64,12 +69,15 @@ public class CombatController : MonoBehaviour
 
     public void TakeDamage(float damageAmount)
     {
-        CurrentHealth -= damageAmount;
-        healthBar.UpdateHealth(CurrentHealth, MaxHealth);
-        if(CurrentHealth <= 0)
+        if(invulTimer >= invulInterval)
         {
-            Die();
+            CurrentHealth -= damageAmount;
+            healthBar.UpdateHealth(CurrentHealth, MaxHealth);
+            invulTimer = 0;
+            if (CurrentHealth <= 0)
+                Die();        
         }
+        
     }
     public void Die()
     {

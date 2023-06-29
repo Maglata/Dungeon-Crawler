@@ -9,30 +9,34 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float stoppingDistance = 0.5f;
     [SerializeField] private float MaxHealth = 100f;
     [SerializeField] private float Damage = 45f;
+    [SerializeField] float invulnarabilityInterval = 1f;
+
 
     private float CurrentHealth = 0f;
     private bool isWalking = false;
     private bool hasSight = false;
+    private float invulTimer = 0f;
 
     private Animator animator;
 
     private Transform playerTransform;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-        animator = GetComponent<Animator>();
-    }
+    private HealthBar healthBar;
 
     void Awake()
     {
+        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        animator = GetComponent<Animator>();
+
+        healthBar = GetComponentInChildren<HealthBar>();
         CurrentHealth = MaxHealth;
+        healthBar.UpdateHealth(CurrentHealth, MaxHealth);
     }
 
     // Update is called once per frame
     void Update()
     {
+        invulTimer += Time.deltaTime;
         // Calculate the direction towards the player
         Vector3 direction = (playerTransform.position - transform.position).normalized;
         direction.y = 0f;
@@ -53,16 +57,33 @@ public class EnemyController : MonoBehaviour
                     transform.position = Vector3.MoveTowards(transform.position, playerTransform.position, moveSpeed * Time.deltaTime);
                     transform.LookAt(playerTransform);
                     hasSight = true;
+                    isWalking = hasSight;
+                    animator.SetBool("isWalking", isWalking);
+                    return;
                 }
-                else
-                {
-                    animator.SetTrigger("Attack");
-                    // To Do: Deal Damage to Player
-                }
+                animator.SetTrigger("Attack");
+                playerTransform.GetComponent<CombatController>().TakeDamage(Damage);
             }
         }
-        Debug.DrawRay(transform.position + new Vector3(0f, 0.5f, 0f), direction * Range, Color.yellow);
         isWalking = hasSight;
         animator.SetBool("isWalking", isWalking);
+    }
+    public void TakeDamage(float damageAmount)
+    {
+        if (invulTimer >= invulnarabilityInterval)
+        {
+            CurrentHealth -= damageAmount;
+            healthBar.UpdateHealth(CurrentHealth, MaxHealth);
+            invulTimer = 0;
+            if (CurrentHealth <= 0)
+                Die();
+        }
+
+    }
+    public void Die()
+    {
+        // Drop loot and remove
+        playerTransform.GetComponentInChildren<AttackRangeDetector>().RemoveEnemy(gameObject);
+        Destroy(gameObject);
     }
 }

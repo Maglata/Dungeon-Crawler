@@ -591,7 +591,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackInterval: 3
+  invulInterval: 1
   MaxHealth: 100
+  Damage: 25
   enemyInRange: 0
 --- !u!114 &3191079342350520281
 MonoBehaviour:

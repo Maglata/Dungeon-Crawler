@@ -647,6 +647,7 @@ MonoBehaviour:
   stoppingDistance: 1.5
   MaxHealth: 100
   Damage: 45
+  invulnarabilityInterval: 1
 --- !u!64 &8780615404847745761
 MeshCollider:
   m_ObjectHideFlags: 0
