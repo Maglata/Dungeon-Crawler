@@ -6,41 +6,45 @@ public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 5;
 
-    float horizontalInput;
-    float verticalInput;
+    Vector3 playerInput;
+    private bool isWalking = false;
 
-    Vector3 moveDirection;
+    private Animator animator;
+    private CharacterController Controller;
 
-    Rigidbody rb;
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        rb.freezeRotation = true;
+        animator = GetComponent<Animator>();
+        Controller = GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        PlayerInput();
+        PlayerInput();      
     }
 
-    void FixedUpdate()
-    {
-        MovePlayer();
-    }
 
     private void PlayerInput()
     {
-        horizontalInput = Input.GetAxisRaw("Horizontal");
-        verticalInput = Input.GetAxisRaw("Vertical");
-
+        playerInput = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
+        MovePlayer();
     }
 
     private void MovePlayer()
     {
-        moveDirection = new Vector3(0, horizontalInput, verticalInput);
-        rb.AddForce(moveDirection.normalized * moveSpeed, ForceMode.Force);
+        if(playerInput != Vector3.zero)
+        {
+            isWalking = true;
+            Vector3 moveVector = transform.TransformDirection(playerInput);
 
+            Controller.Move(moveSpeed * Time.deltaTime * moveVector);
+        }
+        else
+        {
+            isWalking = false;
+        }
+        animator.SetBool("isWalking", isWalking);
     }
 }
