@@ -7,25 +7,23 @@ public class AttackRangeDetector : MonoBehaviour
     private List<GameObject> enemiesInRange = new();
     private CombatController combatcontroller;
 
-    void Start()
+    void Awake()
     {
-        combatcontroller = GetComponent<CombatController>();
-
+        combatcontroller = GetComponentInParent<CombatController>();      
     }
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Something Entered Attack Range");
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (other.CompareTag("Enemy"))
         {
-            enemiesInRange.Add(collision.gameObject);
+            enemiesInRange.Add(other.gameObject);
             combatcontroller.enemyInRange = true;
         }
     }
-    private void OnCollisionExit(Collision collision)
+    private void OnTriggerExit(Collider other)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (other.CompareTag("Enemy"))
         {
-            enemiesInRange.Remove(collision.gameObject);
+            enemiesInRange.Remove(other.gameObject);
 
             if (enemiesInRange.Count == 0)
                 combatcontroller.enemyInRange = false;

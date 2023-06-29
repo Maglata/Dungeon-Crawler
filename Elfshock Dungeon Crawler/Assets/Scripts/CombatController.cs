@@ -5,6 +5,9 @@ using UnityEngine;
 public class CombatController : MonoBehaviour
 {
     [SerializeField] float attackInterval = 1f;
+    [SerializeField] float MaxHealth = 100f;
+
+    private float CurrentHealth = 0f;
 
     public bool enemyInRange = false;
 
@@ -15,11 +18,17 @@ public class CombatController : MonoBehaviour
     private List<GameObject> enemiesInRange;
 
     private Animator animator;
-    // Start is called before the first frame update
-    void Start()
+    private HealthBar healthBar;
+
+
+    void Awake()
     {
         animator = GetComponent<Animator>();
         rangeDetector = GetComponentInChildren<AttackRangeDetector>();
+
+        healthBar = GetComponentInChildren<HealthBar>();
+        CurrentHealth = MaxHealth;
+        healthBar.UpdateHealth(CurrentHealth, MaxHealth);
     }
 
     void Update()
@@ -40,21 +49,30 @@ public class CombatController : MonoBehaviour
 
         if (enemiesInRange.Count > 0)
         {
+            // Trigger attack animation
+            animator.SetTrigger("Attack");
+
             foreach (GameObject enemy in enemiesInRange)
             {
-                // Perform attack animation or logic for each enemy here
-                Debug.Log("Attacking enemy!");
-
-                // Rotate towards the enemy
-                Vector3 direction = enemy.transform.position - transform.position;
-                Quaternion targetRotation = Quaternion.LookRotation(direction);
-                transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, 0.15f);
-
-                // Trigger attack animation
-                animator.SetTrigger("Attack");
+                // Perform enemy damage animation and logic for each enemy here
+              
             }
             attackTimer = 0f;
             canAttack = false;
         }
+    }
+
+    public void TakeDamage(float damageAmount)
+    {
+        CurrentHealth -= damageAmount;
+        healthBar.UpdateHealth(CurrentHealth, MaxHealth);
+        if(CurrentHealth <= 0)
+        {
+            Die();
+        }
+    }
+    public void Die()
+    {
+        Debug.Log("Player Died");
     }
 }
