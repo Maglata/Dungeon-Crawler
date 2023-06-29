@@ -7,7 +7,10 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float Range = 3f;
     [SerializeField] private float moveSpeed = 1f;
     [SerializeField] private float stoppingDistance = 0.5f;
+    [SerializeField] private float MaxHealth = 100f;
+    [SerializeField] private float Damage = 45f;
 
+    private float CurrentHealth = 0f;
     private bool isWalking = false;
     private bool hasSight = false;
 
@@ -22,6 +25,11 @@ public class EnemyController : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
+    void Awake()
+    {
+        CurrentHealth = MaxHealth;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -30,30 +38,30 @@ public class EnemyController : MonoBehaviour
         direction.y = 0f;
 
         RaycastHit hit;
+        hasSight = false;
 
-        if (Physics.Raycast(transform.position + new Vector3(0f,0.5f,0f), direction, out hit, Range))
+        if (Physics.Raycast(transform.position + new Vector3(0f, 0.5f, 0f), direction, out hit, Range))
         {
             if (hit.transform.CompareTag("Player"))
             {
                 float distanceToPlayer = Vector3.Distance(transform.position, playerTransform.position);
-                Debug.Log("Distance:" + distanceToPlayer);
+
+                //Debug.Log("Distance:" + distanceToPlayer);
+
                 if (distanceToPlayer > stoppingDistance)
                 {
                     transform.position = Vector3.MoveTowards(transform.position, playerTransform.position, moveSpeed * Time.deltaTime);
-
                     transform.LookAt(playerTransform);
-
                     hasSight = true;
                 }
                 else
-                    hasSight = false;
+                {
+                    animator.SetTrigger("Attack");
+                    // To Do: Deal Damage to Player
+                }
             }
-            else
-                hasSight = false;
         }
-        else
-            hasSight = false;
-
+        Debug.DrawRay(transform.position + new Vector3(0f, 0.5f, 0f), direction * Range, Color.yellow);
         isWalking = hasSight;
         animator.SetBool("isWalking", isWalking);
     }

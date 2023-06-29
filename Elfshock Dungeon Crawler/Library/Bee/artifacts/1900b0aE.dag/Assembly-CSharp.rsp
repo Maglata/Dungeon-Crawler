@@ -355,6 +355,7 @@
 "Assets/3rd-party/LowPolyDungeon/Demo Scenes/MouseCamLook.cs"
 "Assets/3rd-party/LowPolyDungeon/Demo Scenes/PlayerMovement.cs"
 "Assets/3rd-party/LowPolyDungeon/Demo Scenes/ScreenshotMaker.cs"
+"Assets/Scripts/AttackRangeDetector.cs"
 "Assets/Scripts/CameraControl.cs"
 "Assets/Scripts/CombatController.cs"
 "Assets/Scripts/EnemyController.cs"
