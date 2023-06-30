@@ -7,7 +7,6 @@ public class SceneSwitcher : MonoBehaviour
 {
     public void startGame()
     {
-        Debug.Log("Clicked");
         SceneManager.LoadScene("InGame");
         SceneManager.UnloadSceneAsync("MainMenu");
     }

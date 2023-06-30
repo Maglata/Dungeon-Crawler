@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
         }
 
         // Reset Gate
-        gateObj.transform.eulerAngles = new Vector3(0f, 0f, 0f);
+        gateObj.SetActive(true);
 
         // Generate Player
         Vector3 playerPosition = new Vector3(playerX, 0f, playerZ);
@@ -82,7 +82,7 @@ public class GameManager : MonoBehaviour
 
         if(enemies.Count == 0)
         {
-            gateObj.transform.eulerAngles = new Vector3(0f, 90f, 0f);
+            gateObj.SetActive(false);
         }
             
     }
@@ -90,5 +90,14 @@ public class GameManager : MonoBehaviour
     private void ResetLevel(GameObject player)
     {
         GenerateLevel();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player") && enemies.Count == 0)
+        {
+            Debug.Log("Level Finished");
+            GenerateLevel();
+        }
     }
 }

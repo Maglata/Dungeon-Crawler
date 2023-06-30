@@ -648,6 +648,8 @@ MonoBehaviour:
   MaxHealth: 100
   Damage: 45
   invulnarabilityInterval: 1
+  point: {fileID: 5409377726279660732, guid: 2dc72bf7437787e4cacd9ca84c7f1598, type: 3}
+  playerTransform: {fileID: 0}
 --- !u!64 &8780615404847745761
 MeshCollider:
   m_ObjectHideFlags: 0

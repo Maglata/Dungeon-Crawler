@@ -12,6 +12,8 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float Damage = 45f;
     [SerializeField] float invulnarabilityInterval = 1f;
 
+    [SerializeField] private GameObject point;
+
     public event Action<GameObject> OnEnemyDestroyed;
 
     private float CurrentHealth = 0f;
@@ -83,7 +85,10 @@ public class EnemyController : MonoBehaviour
     }
     public void Die()
     {
-        // Drop loot and remove
+        Vector3 pointPosition = transform.position;
+        pointPosition.y = 0.5f;
+        Instantiate(point, pointPosition, Quaternion.identity);
+
         playerTransform.GetComponentInChildren<AttackRangeDetector>().RemoveEnemy(gameObject);
         Destroy(gameObject);
     }

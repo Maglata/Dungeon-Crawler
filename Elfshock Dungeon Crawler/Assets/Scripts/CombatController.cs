@@ -59,7 +59,10 @@ public class CombatController : MonoBehaviour
             // Trigger attack animation
             animator.SetTrigger("Attack");
 
-            foreach (GameObject enemy in enemiesInRange)
+            // Create a copy of the enemiesInRange list
+            List<GameObject> enemiesCopy = new List<GameObject>(enemiesInRange);
+
+            foreach (GameObject enemy in enemiesCopy)
             {
                 // Perform enemy damage animation and logic for each enemy here
                 enemy.GetComponent<EnemyController>().TakeDamage(Damage);
