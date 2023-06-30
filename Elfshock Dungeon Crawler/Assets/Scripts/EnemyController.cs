@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float Damage = 45f;
     [SerializeField] float invulnarabilityInterval = 1f;
 
+    public event Action<GameObject> OnEnemyDestroyed;
 
     private float CurrentHealth = 0f;
     private bool isWalking = false;
@@ -19,24 +21,23 @@ public class EnemyController : MonoBehaviour
 
     private Animator animator;
 
-    private Transform playerTransform;
+    public Transform playerTransform;
 
-    private HealthBar healthBar;
+    private HealthBar healthBar; 
 
     void Awake()
     {
-        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         animator = GetComponent<Animator>();
 
         healthBar = GetComponentInChildren<HealthBar>();
         CurrentHealth = MaxHealth;
-        healthBar.UpdateHealth(CurrentHealth, MaxHealth);
     }
 
     // Update is called once per frame
     void Update()
     {
         invulTimer += Time.deltaTime;
+
         // Calculate the direction towards the player
         Vector3 direction = (playerTransform.position - transform.position).normalized;
         direction.y = 0f;
@@ -86,4 +87,10 @@ public class EnemyController : MonoBehaviour
         playerTransform.GetComponentInChildren<AttackRangeDetector>().RemoveEnemy(gameObject);
         Destroy(gameObject);
     }
+
+    private void OnDestroy()
+    {
+        OnEnemyDestroyed?.Invoke(gameObject);
+    }
+
 }

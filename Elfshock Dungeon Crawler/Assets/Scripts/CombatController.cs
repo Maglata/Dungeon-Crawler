@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,6 +25,8 @@ public class CombatController : MonoBehaviour
     private Animator animator;
     private HealthBar healthBar;
 
+    public event Action<GameObject> OnPlayerDeath;
+
 
     void Awake()
     {
@@ -32,7 +35,6 @@ public class CombatController : MonoBehaviour
 
         healthBar = GetComponentInChildren<HealthBar>();
         CurrentHealth = MaxHealth;
-        healthBar.UpdateHealth(CurrentHealth, MaxHealth);
     }
 
     void Update()
@@ -82,5 +84,6 @@ public class CombatController : MonoBehaviour
     public void Die()
     {
         Debug.Log("Player Died");
+        OnPlayerDeath?.Invoke(gameObject);
     }
 }

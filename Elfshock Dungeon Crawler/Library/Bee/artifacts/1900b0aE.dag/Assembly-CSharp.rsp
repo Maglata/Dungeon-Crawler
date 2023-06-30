@@ -359,6 +359,7 @@
 "Assets/Scripts/CameraControl.cs"
 "Assets/Scripts/CombatController.cs"
 "Assets/Scripts/EnemyController.cs"
+"Assets/Scripts/GameManager.cs"
 "Assets/Scripts/HealthBar.cs"
 "Assets/Scripts/PlayerController.cs"
 "Assets/Scripts/SceneSwitcher.cs"
