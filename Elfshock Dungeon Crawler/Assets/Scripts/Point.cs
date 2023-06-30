@@ -6,9 +6,12 @@ public class Point : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && other.isTrigger == false)
         {
-           Debug.Log("Coin Collected");
+           //Debug.Log("Coin Collected");
+
+           other.GetComponent<PlayerController>().points++;
+
            Destroy(gameObject);
         }
     }

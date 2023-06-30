@@ -593,7 +593,7 @@ MonoBehaviour:
   attackInterval: 3
   invulInterval: 1
   MaxHealth: 100
-  Damage: 100
+  Damage: 35
   enemyInRange: 0
 --- !u!114 &3191079342350520281
 MonoBehaviour:
@@ -608,6 +608,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  points: 0
 --- !u!143 &6802764192958789734
 CharacterController:
   m_ObjectHideFlags: 0

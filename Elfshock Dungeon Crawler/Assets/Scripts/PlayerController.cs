@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 5;
 
+    public int points;
+
     Vector3 playerInput;
     private bool isWalking = false;
 

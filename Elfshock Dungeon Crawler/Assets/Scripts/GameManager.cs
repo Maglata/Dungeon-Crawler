@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
         GameObject existingPlayer = GameObject.FindGameObjectWithTag("Player");
         if (existingPlayer != null)
         {
+            PointSystem.SavePoints(existingPlayer.GetComponent<PlayerController>());
             Destroy(existingPlayer);
         }
 
@@ -55,23 +56,31 @@ public class GameManager : MonoBehaviour
         Vector3 playerPosition = new Vector3(playerX, 0f, playerZ);
         GameObject player = Instantiate(playerObj, playerPosition, Quaternion.identity);
         player.transform.eulerAngles = new Vector3(0f, 180f, 0f); // Set y rotation to 180 degrees
+
+        // Assign Player Death Event
         player.GetComponent<CombatController>().OnPlayerDeath += ResetLevel;
         player.transform.SetParent(Level.transform);
         playerTransform = player.transform;
 
-        // Generate Enemies and add them to the list
+        // Load Player Points
+        if(PointSystem.LoadPoints() != null)
+            player.GetComponent<PlayerController>().points = PointSystem.LoadPoints().points;
+
         int numEnemies = Random.Range(minEnemies, maxEnemies + 1);
 
         for (int i = 0; i < numEnemies; i++)
         {
+            // Generate Enemy
             Vector3 randomPosition = new Vector3(Random.Range(minXEnemy, maxXEnemy), 0f, Random.Range(minZEnemy, maxZEnemy));
             GameObject enemy = Instantiate(enemyObj, randomPosition, Quaternion.identity);
             enemy.transform.SetParent(Level.transform);
             enemies.Add(enemy);
 
-            // Subscribe to the OnDestroy event of the enemy object
+            
             var controller = enemy.GetComponent<EnemyController>();
 
+            // Subscribe to the OnDestroy event of the enemy object
+            // setting the target for enemy raycast
             controller.OnEnemyDestroyed += RemoveEnemyFromList;
             controller.playerTransform = playerTransform;
         }      
