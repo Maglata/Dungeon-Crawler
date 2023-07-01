@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
@@ -21,11 +22,10 @@ public class EnemyController : MonoBehaviour
     private bool hasSight = false;
     private float invulTimer = 0f;
 
+    private NavMeshAgent agent;
     private Animator animator;
-
     public Transform playerTransform;
-
-    private HealthBar healthBar; 
+    private HealthBar healthBar;
 
     void Awake()
     {
@@ -33,6 +33,9 @@ public class EnemyController : MonoBehaviour
 
         healthBar = GetComponentInChildren<HealthBar>();
         CurrentHealth = MaxHealth;
+        agent = GetComponent<NavMeshAgent>();
+        agent.speed = moveSpeed;
+        agent.stoppingDistance = stoppingDistance;
     }
 
     // Update is called once per frame
@@ -53,14 +56,15 @@ public class EnemyController : MonoBehaviour
             {
                 float distanceToPlayer = Vector3.Distance(transform.position, playerTransform.position);
 
-                //Debug.Log("Distance:" + distanceToPlayer);
-
                 if (distanceToPlayer > stoppingDistance)
                 {
-                    transform.position = Vector3.MoveTowards(transform.position, playerTransform.position, moveSpeed * Time.deltaTime);
+                    agent.SetDestination(playerTransform.position);
+
                     transform.LookAt(playerTransform);
+
                     hasSight = true;
                     isWalking = hasSight;
+
                     animator.SetBool("isWalking", isWalking);
                     return;
                 }
