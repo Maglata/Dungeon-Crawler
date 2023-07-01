@@ -473,19 +473,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 14a448de93c55fd47b038d6edafd9ae5, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 14a448de93c55fd47b038d6edafd9ae5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2
+      value: -2.6668525
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 14a448de93c55fd47b038d6edafd9ae5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.010000229
+      value: 0.01192832
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 14a448de93c55fd47b038d6edafd9ae5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 13
+      value: 4.784354
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 14a448de93c55fd47b038d6edafd9ae5, type: 3}
       propertyPath: m_LocalRotation.w
@@ -547,7 +547,7 @@ PrefabInstance:
       addedObject: {fileID: 6802764192958789734}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 14a448de93c55fd47b038d6edafd9ae5, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5135087446513085669}
+      addedObject: {fileID: 3606125421249604202}
   m_SourcePrefab: {fileID: 100100000, guid: 14a448de93c55fd47b038d6edafd9ae5, type: 3}
 --- !u!4 &6033126484331424002 stripped
 Transform:
@@ -637,8 +637,8 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
---- !u!64 &5135087446513085669
-MeshCollider:
+--- !u!65 &3606125421249604202
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -655,7 +655,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -4480263318040302648, guid: 14a448de93c55fd47b038d6edafd9ae5, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 0.5, y: 2, z: 0.5}
+  m_Center: {x: 0, y: 1, z: 0}
