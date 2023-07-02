@@ -77,12 +77,10 @@ public class GameManager : MonoBehaviour
             enemies.Add(enemy);
 
             
-            var controller = enemy.GetComponent<EnemyController>();
+            var controller = enemy.GetComponent<EnemyControllerSphere>();
 
             // Subscribe to the OnDestroy event of the enemy object
-            // setting the target for enemy raycast
             controller.OnEnemyDestroyed += RemoveEnemyFromList;
-            controller.playerTransform = playerTransform;
         }      
     }
     private void RemoveEnemyFromList(GameObject enemy)

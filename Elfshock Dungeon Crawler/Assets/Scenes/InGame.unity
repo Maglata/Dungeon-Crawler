@@ -980,7 +980,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a06f7ffc10057b04da062ecac562b252, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyObj: {fileID: 1335500703408173797, guid: 5d9c3941a28f0534982d7a93384097f3, type: 3}
+  enemyObj: {fileID: 1335500703408173797, guid: 9feec55dd00e887468d300f9170d399f, type: 3}
   playerObj: {fileID: 6409229466675131320, guid: 33d1f6cc2723fcd47b4cebc806c2bf8a, type: 3}
   gateObj: {fileID: 1487527828}
   minEnemies: 2

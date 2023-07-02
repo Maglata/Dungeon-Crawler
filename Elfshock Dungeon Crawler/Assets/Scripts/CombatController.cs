@@ -65,7 +65,9 @@ public class CombatController : MonoBehaviour
             foreach (GameObject enemy in enemiesCopy)
             {
                 // Perform enemy damage animation and logic for each enemy here
-                enemy.GetComponent<EnemyController>().TakeDamage(Damage);
+                //enemy.GetComponent<EnemyController>().TakeDamage(Damage);
+
+                enemy.GetComponent<EnemyControllerSphere>().TakeDamage(Damage);
             }
             attackTimer = 0f;
             canAttack = false;

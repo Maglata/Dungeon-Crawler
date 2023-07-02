@@ -362,6 +362,7 @@
 "Assets/Scripts/AttackRangeDetector.cs"
 "Assets/Scripts/CombatController.cs"
 "Assets/Scripts/EnemyController.cs"
+"Assets/Scripts/EnemyControllerSphere.cs"
 "Assets/Scripts/RigidMovement/PlayerControllerRigid.cs"
 "Assets/Scripts/StateManagement/GameManager.cs"
 "Assets/Scripts/StateManagement/HealthBar.cs"
