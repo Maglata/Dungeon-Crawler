@@ -13,6 +13,7 @@ public class EnemyControllerSphere : MonoBehaviour
     [SerializeField] private float MaxHealth = 100f;
     [SerializeField] private float Damage = 45f;
     [SerializeField] float invulnarabilityInterval = 1f;
+    [SerializeField] float attackInterval = 1.5f;
 
     [SerializeField] private GameObject point;
     [SerializeField] private LayerMask playerMask;
@@ -22,8 +23,9 @@ public class EnemyControllerSphere : MonoBehaviour
     private float CurrentHealth = 0f;
     private bool isWalking = false;
     private float invulTimer = 0f;
+    private float attackTimer = 0f;
 
-    float distanceToPlayer;
+    private float distanceToPlayer;
 
     private NavMeshAgent agent;
     private Animator animator;
@@ -44,6 +46,7 @@ public class EnemyControllerSphere : MonoBehaviour
     void Update()
     {
         invulTimer += Time.deltaTime;
+        attackTimer += Time.deltaTime;
     }
 
     private void FixedUpdate()
@@ -53,8 +56,8 @@ public class EnemyControllerSphere : MonoBehaviour
 
     private void FindPlayer()
     {
-        //RaycastHit hit;    
-        //if (Physics.SphereCast(transform.position, viewRadius, transform.forward, out hit, 1, playerMask)) 
+        //RaycastHit hit;
+        //if (Physics.SphereCast(transform.position, viewRadius, transform.forward, out hit, 0.01f, playerMask))
         //{
         //    MoveToPlayer(hit.transform);
         //    Debug.DrawLine(transform.position, hit.transform.position, Color.red);
@@ -63,7 +66,7 @@ public class EnemyControllerSphere : MonoBehaviour
         Collider[] colliders = Physics.OverlapSphere(transform.position, viewRadius, playerMask);
 
         if (colliders.Length != 0)
-        {
+        {    
             MoveToPlayer(colliders[0].transform);
         }
         else
@@ -71,7 +74,7 @@ public class EnemyControllerSphere : MonoBehaviour
             isWalking = false;
             agent.isStopped = true;
         }
-            
+
 
         animator.SetBool("isWalking", isWalking);
     }
@@ -94,10 +97,21 @@ public class EnemyControllerSphere : MonoBehaviour
             //Debug.Log("Reached Player");
             isWalking = false;
             agent.isStopped = true;
-
-            animator.SetTrigger("Attack");
-            playerTransform.GetComponent<CombatController>().TakeDamage(Damage);
+            if(attackTimer >= attackInterval)
+            {
+                attackTimer = 0;
+                animator.SetTrigger("Attack");
+            }       
         }   
+    }
+
+    public void Attack()
+    {
+        // Check if at the moment of the attack the player is still there
+        Collider[] colliders = Physics.OverlapSphere(transform.position, viewRadius / 2, playerMask);
+
+        if (colliders.Length != 0)
+            colliders[0].transform.GetComponent<CombatController>().TakeDamage(Damage);
     }
 
     void OnDrawGizmosSelected()

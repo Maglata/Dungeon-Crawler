@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms;
 
 public class CombatController : MonoBehaviour
 {
@@ -10,28 +11,29 @@ public class CombatController : MonoBehaviour
     [SerializeField] float MaxHealth = 100f;
     [SerializeField] private float Damage = 25f;
 
-    private float CurrentHealth = 0f;
+    [SerializeField] float attackRange = 1f;
+    [SerializeField] float attackRadius = 1f;
 
-    public bool enemyInRange = false;
+    [SerializeField] LayerMask enemyMask;
+
+    private float CurrentHealth = 0f;
 
     private float attackTimer = 0f;
     private bool canAttack = true;
 
     private float invulTimer = 0f;
 
-    private AttackRangeDetector rangeDetector;
-    private List<GameObject> enemiesInRange;
-
     private Animator animator;
     private HealthBar healthBar;
 
     public event Action<GameObject> OnPlayerDeath;
 
+    private RaycastHit hit;
+
 
     void Awake()
     {
         animator = GetComponent<Animator>();
-        rangeDetector = GetComponentInChildren<AttackRangeDetector>();
 
         healthBar = GetComponentInChildren<HealthBar>();
         CurrentHealth = MaxHealth;
@@ -45,33 +47,29 @@ public class CombatController : MonoBehaviour
         // Check if enough time has passed to allow another attack
         if (attackTimer >= attackInterval)
             canAttack = true;
-
-        if (canAttack && enemyInRange)
-            Attack();
     }
 
-    private void Attack()
+    private void FixedUpdate()
     {
-        enemiesInRange = rangeDetector.GetEnemiesInRange();
+        bool enemyinrange = Physics.SphereCast(transform.position, attackRadius,transform.forward,out hit, attackRange, enemyMask);
 
-        if (enemiesInRange.Count > 0)
+        if (enemyinrange && canAttack)
         {
-            // Trigger attack animation
-            animator.SetTrigger("Attack");
-
-            // Create a copy of the enemiesInRange list
-            List<GameObject> enemiesCopy = new List<GameObject>(enemiesInRange);
-
-            foreach (GameObject enemy in enemiesCopy)
-            {
-                // Perform enemy damage animation and logic for each enemy here
-                //enemy.GetComponent<EnemyController>().TakeDamage(Damage);
-
-                enemy.GetComponent<EnemyControllerSphere>().TakeDamage(Damage);
-            }
-            attackTimer = 0f;
             canAttack = false;
+            attackTimer = 0f;
+            animator.SetTrigger("Attack");
         }
+    }
+
+    public void Attack()
+    {
+        RaycastHit[] hits = Physics.SphereCastAll(transform.position, attackRadius, transform.forward, attackRange, enemyMask);
+        
+        if(hits.Length != 0)
+            for (int i = 0; i < hits.Length; i++)
+            {
+                hits[i].collider.GetComponent<EnemyControllerSphere>().TakeDamage(Damage);
+            }
     }
 
     public void TakeDamage(float damageAmount)

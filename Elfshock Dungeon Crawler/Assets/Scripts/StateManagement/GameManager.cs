@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -21,8 +22,6 @@ public class GameManager : MonoBehaviour
 
     private float playerX = -2f;
     private float playerZ = 13f;
-
-    private Transform playerTransform;
 
     public List<GameObject> enemies = new();
 
@@ -60,7 +59,6 @@ public class GameManager : MonoBehaviour
         // Assign Player Death Event
         player.GetComponent<CombatController>().OnPlayerDeath += ResetLevel;
         player.transform.SetParent(Level.transform);
-        playerTransform = player.transform;
 
         // Load Player Points
         if(PointSystem.LoadPoints() != null)
@@ -99,9 +97,10 @@ public class GameManager : MonoBehaviour
         GenerateLevel();
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.CompareTag("Player") && enemies.Count == 0)
+        Debug.Log("Something Entered");
+        if (collision.transform.CompareTag("Player") && enemies.Count == 0)
         {
             Debug.Log("Level Finished");
             GenerateLevel();
